@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcMusicStore.Models;
 
 namespace MvcMusicStore.Controllers
 {
@@ -11,31 +12,41 @@ namespace MvcMusicStore.Controllers
         // GET: Store
         public ActionResult Index()
         {
-            return View();
+            var genres = new List<Genre>
+            { 
+                new Genre {Name = "Disco"}, 
+                new Genre {Name = "Jazz"}, 
+                new Genre {Name = "Rock"}
+            };
+            return View(genres);
         }
 
         // GET: /Store/Browse
-        public string Browse(string genre)
+        public ActionResult Browse(string genre)
         {
-            string message = HttpUtility.HtmlEncode("Store.Browse(), Genre = " + genre);
-            return message;
+            var genreModel = new Genre { Name = genre };
+            return View(genreModel);
         }
 
         // GET: /Store/Details
-        public string Details(object id)
+        /// <summary>
+        /// Deatils() runs on GET: /Store/Details. It requires an id parameter. If it is null, or not an integer, an error message will display. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>ActionResult View w/ an Album.</returns>
+        public ActionResult Details(object id)
         {
-            string message; 
-
             if(id != null && int.TryParse(id.ToString(), out int i))
             {
-                message = "Store.Details(), ID = " + id;
+                var album = new Album { Title = "Album " + i };
+                return View(album);
             }
             else
             {
-                message = "Missing id number.";
+                var album = new Album { Title = "Missing id number for album." };
+                return View(album);
             }
-            
-            return message;
+
         }
     }
 }
