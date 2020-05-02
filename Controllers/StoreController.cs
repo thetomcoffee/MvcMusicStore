@@ -37,12 +37,12 @@ namespace MvcMusicStore.Controllers
         {
             if(id != null && int.TryParse(id.ToString(), out int i))
             {
-                var album = storeDB.Albums.Find(i);
+                var album = storeDB.Albums.Include("Genre").Where(a => a.AlbumId == i).FirstOrDefault();
                 return View(album);
             }
             else
             {
-                var album = new Album { Title = "Missing id number for album." };
+                var album = new Album { Title = "Missing id number for album.", Genre = { Name = "" } };
                 return View(album);
             }
 
