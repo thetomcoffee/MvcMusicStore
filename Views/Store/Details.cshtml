@@ -22,6 +22,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @{  var genreName = this.Model.Genre.Name; }
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.AlbumId }) |*@
+    @Html.ActionLink("Back to " + genreName, "Browse", new { genre = genreName } )
 </p>
