@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MvcMusicStore.Models;
+using MvcMusicStore.UI.Models;
 
-namespace MvcMusicStore.Controllers
+namespace MvcMusicStore.UI.Controllers
 {
     public class StoreController : Controller
     {

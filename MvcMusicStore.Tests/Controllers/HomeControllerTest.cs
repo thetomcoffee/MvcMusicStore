@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MvcMusicStore;
-using MvcMusicStore.Controllers;
+using MvcMusicStore.UI;
+using MvcUsingStore.UI.Controllers;
 
 namespace MvcMusicStore.Tests.Controllers
 {
